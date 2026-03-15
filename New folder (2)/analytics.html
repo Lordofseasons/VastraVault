@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analytics — वस्त्रVault</title>
+  <meta name="description" content="VastraVault Analytics — dead stock detection, demand forecasting, and sales insights." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👗</text></svg>" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body data-page="analytics">
+
+  <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
+  <div class="app-layout">
+    <aside class="sidebar" id="sidebar">
+      <a href="index.html" class="sidebar-brand"><span class="hindi">वस्त्र</span><span class="english">Vault</span></a>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-label">Main</div>
+        <a href="dashboard.html" class="sidebar-link"><span class="icon">📊</span> Dashboard</a>
+        <a href="pos.html" class="sidebar-link"><span class="icon">🧾</span> POS / New Sale</a>
+        <a href="inventory.html" class="sidebar-link"><span class="icon">📦</span> Inventory</a>
+        <div class="sidebar-section-label">Commerce</div>
+        <a href="whatsapp-orders.html" class="sidebar-link"><span class="icon">💬</span> WhatsApp Orders <span class="badge">2</span></a>
+        <a href="customers.html" class="sidebar-link"><span class="icon">👤</span> Customers</a>
+        <div class="sidebar-section-label">Intelligence</div>
+        <a href="analytics.html" class="sidebar-link active"><span class="icon">📈</span> Analytics & Reports</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sidebar-user"><div class="sidebar-avatar">P</div><div class="sidebar-user-info"><div class="sidebar-user-name">Priya's Boutique</div><div class="sidebar-user-role">Owner</div></div></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1>📈 Analytics & Reports</h1>
+          <p>Dead stock detection, demand forecasting, and sales insights</p>
+        </div>
+      </div>
+
+      <div class="page-body">
+
+        <!-- Charts Row -->
+        <div class="dashboard-grid-equal">
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">🔮 AI Demand Forecast (Next Month)</div>
+              <span style="font-size:0.72rem;color:var(--gray-500);background:rgba(107,45,62,0.08);padding:3px 10px;border-radius:20px">🧪 Beta</span>
+            </div>
+            <div class="panel-body">
+              <div class="chart-container">
+                <canvas id="forecastChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">🍩 Sales by Category</div>
+            </div>
+            <div class="panel-body">
+              <div class="chart-container">
+                <canvas id="categoryChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Revenue Trend -->
+        <div class="panel" style="margin-bottom:var(--space-xl)">
+          <div class="panel-header">
+            <div class="panel-title">💰 Monthly Revenue Trend</div>
+          </div>
+          <div class="panel-body">
+            <div class="chart-container">
+              <canvas id="revenueChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dead Stock Report -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">📉 Dead Stock Report</div>
+            <span style="font-size:0.78rem;color:var(--danger);font-weight:600">Items unsold for 30+ days</span>
+          </div>
+          <div class="panel-body no-padding">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Stock</th>
+                  <th>Days Since Sale</th>
+                  <th>Price</th>
+                  <th>Recommended Discount</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="deadStockBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

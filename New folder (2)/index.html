@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>वस्त्रVault — AI-Powered Boutique Inventory Intelligence</title>
+  <meta name="description" content="VastraVault transforms how small boutique owners manage their fashion retail business with AI-powered billing, inventory, WhatsApp order capture, and demand forecasting." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👗</text></svg>" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <span class="hindi">वस्त्र</span><span class="english">Vault</span>
+      </a>
+
+      <div class="navbar-links" id="navLinks">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="inventory.html">Inventory</a>
+        <a href="whatsapp-orders.html">Orders</a>
+        <a href="customers.html">Customers</a>
+        <a href="analytics.html">Reports</a>
+        <a href="dashboard.html" class="btn-login">Login / Get Started</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="hero">
+    <div class="container">
+
+      <!-- Left: Content -->
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="dot"></span>
+          AI-Powered Retail Intelligence
+        </div>
+
+        <h1 class="hero-title">
+          Manage Your <br />
+          Boutique Stock <br />
+          with <span class="highlight">Elegance</span>
+        </h1>
+
+        <p class="hero-description">
+          Track sarees, dresses, fabrics and accessories effortlessly with 
+          वस्त्रVault inventory system. Smart billing, WhatsApp order capture, 
+          and AI demand forecasting — all in one platform.
+        </p>
+
+        <div class="hero-actions">
+          <a href="dashboard.html" class="btn-primary" id="ctaManage">
+            <span>Manage Inventory</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="dashboard.html" class="btn-secondary-link">
+            View Dashboard Demo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">7M+</div>
+            <div class="stat-label">Boutiques in India</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">&lt;60s</div>
+            <div class="stat-label">Invoice Generation</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">WhatsApp Tracked</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Visual -->
+      <div class="hero-visual">
+        <div class="hero-image-wrapper">
+          <div class="hero-blob"></div>
+          <img src="assets/hero-illustration.png" alt="Boutique inventory illustration showing a mannequin with saree and clothing racks" class="hero-image" />
+
+          <!-- Floating Card 1 — Banarasi Silk -->
+          <div class="floating-card floating-card-1" id="floatingCard1">
+            <img src="assets/banarasi-silk.png" alt="Banarasi Silk Saree" />
+            <div class="floating-card-info">
+              <div class="floating-card-name">Banarasi Silk</div>
+              <div class="floating-card-meta">12 pcs <span class="price">₹8,500</span></div>
+            </div>
+          </div>
+
+          <!-- Floating Card 2 — Indo-Western Gown -->
+          <div class="floating-card floating-card-2" id="floatingCard2">
+            <img src="assets/indo-western-gown.png" alt="Indo-Western Gown" />
+            <div class="floating-card-info">
+              <div class="floating-card-name">Indo-Western Gown</div>
+              <div class="floating-card-meta">5 pcs <span class="price">₹8,500</span></div>
+              <div class="badge-low-stock">Low Stock</div>
+            </div>
+          </div>
+
+          <!-- Floating Card 3 — Bandhani Fabric -->
+          <div class="floating-card floating-card-3" id="floatingCard3">
+            <img src="assets/bandhani-fabric.png" alt="Bandhani Fabric" />
+            <div class="floating-card-info">
+              <div class="floating-card-name">Bandhani Fabric</div>
+              <div class="floating-card-meta">30 m available</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== SEARCH / FILTER BAR ===== -->
+  <div class="search-section">
+    <div class="search-bar" id="searchBar">
+      <div class="search-field">
+        <span class="search-field-label">Category</span>
+        <select id="searchCategory">
+          <option>All Categories</option>
+          <option>Saree</option>
+          <option>Kurti</option>
+          <option>Fabric</option>
+          <option>Western</option>
+          <option>Accessories</option>
+        </select>
+      </div>
+      <div class="search-bar-divider"></div>
+      <div class="search-field">
+        <span class="search-field-label">Stock Status</span>
+        <select id="searchStock">
+          <option>All Status</option>
+          <option>In Stock</option>
+          <option>Low Stock</option>
+          <option>Dead Stock</option>
+        </select>
+      </div>
+      <div class="search-bar-divider"></div>
+      <div class="search-field">
+        <span class="search-field-label">Supplier</span>
+        <select id="searchSupplier">
+          <option>All Suppliers</option>
+          <option>Surat Silk House</option>
+          <option>Jaipur Fabrics</option>
+          <option>Mumbai Textiles</option>
+        </select>
+      </div>
+      <button class="btn-search" id="btnSearch" aria-label="Search Inventory">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="M21 21l-4.35-4.35"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== FEATURES SECTION ===== -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-badge">✨ Power Features</span>
+        <h2 class="section-title">Everything Your Boutique Needs</h2>
+        <p class="section-subtitle">
+          From billing to demand forecasting — वस्त्रVault gives you retail intelligence that was previously available only to large chains.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon billing">🧾</div>
+          <h3 class="feature-title">Smart POS & Billing</h3>
+          <p class="feature-desc">Generate GST-compliant invoices in under 60 seconds. Search by name, barcode, or category. Apply discounts and select payment modes instantly.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon whatsapp">💬</div>
+          <h3 class="feature-title">WhatsApp Commerce</h3>
+          <p class="feature-desc">Log WhatsApp orders directly into your sales ledger. Track order status from pending to delivered. Never lose a WhatsApp order again.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon inventory">📦</div>
+          <h3 class="feature-title">Smart Inventory Scanner</h3>
+          <p class="feature-desc">Scan barcodes with your phone camera. Bulk-add stock without typing. Get low-stock alerts automatically when thresholds are crossed.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon customers">👤</div>
+          <h3 class="feature-title">Customer Style Profiles</h3>
+          <p class="feature-desc">Auto-built profiles from purchase history. See preferred categories, colors, and sizes. Send targeted WhatsApp notifications for new arrivals.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon deadstock">📉</div>
+          <h3 class="feature-title">Dead Stock Detector</h3>
+          <p class="feature-desc">Auto-flag items unsold for 45+ days. Get AI-recommended discount percentages. Create flash discounts in one click to clear aging inventory.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon analytics">📊</div>
+          <h3 class="feature-title">AI Demand Prediction</h3>
+          <p class="feature-desc">Monthly reports predicting top-selling categories. Confidence-scored predictions based on 90 days of sales data. Visual charts on the analytics dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="navbar-brand">
+            <span class="hindi">वस्त्र</span><span class="english">Vault</span>
+          </a>
+          <p>AI-powered retail intelligence for local fashion boutiques. Manage inventory, billing, WhatsApp orders, and customer insights — all in one platform.</p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="pos.html">POS & Billing</a></li>
+            <li><a href="inventory.html">Inventory</a></li>
+            <li><a href="analytics.html">Analytics</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Features</h4>
+          <ul>
+            <li><a href="whatsapp-orders.html">WhatsApp Orders</a></li>
+            <li><a href="customers.html">Customer Profiles</a></li>
+            <li><a href="analytics.html">Dead Stock Detector</a></li>
+            <li><a href="analytics.html">AI Forecasting</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2025 वस्त्रVault. Built with ❤️ for Indian Boutiques.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

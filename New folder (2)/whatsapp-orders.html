@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhatsApp Orders — वस्त्रVault</title>
+  <meta name="description" content="VastraVault WhatsApp Orders — log, track, and manage orders received via WhatsApp." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👗</text></svg>" />
+</head>
+<body data-page="whatsapp">
+
+  <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
+  <div class="app-layout">
+    <aside class="sidebar" id="sidebar">
+      <a href="index.html" class="sidebar-brand"><span class="hindi">वस्त्र</span><span class="english">Vault</span></a>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-label">Main</div>
+        <a href="dashboard.html" class="sidebar-link"><span class="icon">📊</span> Dashboard</a>
+        <a href="pos.html" class="sidebar-link"><span class="icon">🧾</span> POS / New Sale</a>
+        <a href="inventory.html" class="sidebar-link"><span class="icon">📦</span> Inventory</a>
+        <div class="sidebar-section-label">Commerce</div>
+        <a href="whatsapp-orders.html" class="sidebar-link active"><span class="icon">💬</span> WhatsApp Orders <span class="badge">2</span></a>
+        <a href="customers.html" class="sidebar-link"><span class="icon">👤</span> Customers</a>
+        <div class="sidebar-section-label">Intelligence</div>
+        <a href="analytics.html" class="sidebar-link"><span class="icon">📈</span> Analytics & Reports</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sidebar-user"><div class="sidebar-avatar">P</div><div class="sidebar-user-info"><div class="sidebar-user-name">Priya's Boutique</div><div class="sidebar-user-role">Owner</div></div></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1>💬 WhatsApp Orders</h1>
+          <p>Log and track orders received via WhatsApp</p>
+        </div>
+        <div class="page-header-actions">
+          <button class="btn btn-whatsapp" id="newWAOrder">+ New WhatsApp Order</button>
+        </div>
+      </div>
+
+      <div class="page-body">
+        <!-- Filters -->
+        <div class="filters-bar">
+          <div class="filter-group">
+            <label>Status:</label>
+            <select class="filter-select" id="waStatusFilter">
+              <option value="all">All Status</option>
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="delivered">Delivered</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Orders Table -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">📋 WhatsApp Order Log</div>
+          </div>
+          <div class="panel-body no-padding">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Items</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="waOrdersBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- New Order Modal -->
+  <div class="modal-overlay" id="orderModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>💬 Log New WhatsApp Order</h2>
+        <button class="modal-close" id="closeOrderModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Customer Name</label>
+          <input type="text" class="form-input" id="waCustomerName" placeholder="e.g. Meera Sharma" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Product</label>
+          <select class="form-select" id="waProduct">
+            <option value="">Select a product</option>
+            <option value="P001">Banarasi Silk Saree — ₹8,500</option>
+            <option value="P002">Indo-Western Gown — ₹8,500</option>
+            <option value="P003">Bandhani Fabric — ₹450/m</option>
+            <option value="P004">Chanderi Cotton Kurti — ₹2,200</option>
+            <option value="P005">Georgette Lehenga — ₹12,000</option>
+            <option value="P006">Palazzo Pants Set — ₹1,800</option>
+            <option value="P007">Chikankari Kurta — ₹3,500</option>
+            <option value="P008">Kalamkari Dupatta — ₹850</option>
+            <option value="P010">Patola Silk Saree — ₹15,000</option>
+            <option value="P013">Organza Saree — ₹6,800</option>
+            <option value="P014">Cotton Kaftan — ₹2,800</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Quantity</label>
+          <input type="number" class="form-input" id="waQty" value="1" min="1" max="50" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="document.getElementById('orderModal').classList.remove('active')">Cancel</button>
+        <button class="btn btn-whatsapp" id="submitOrder">Log Order</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

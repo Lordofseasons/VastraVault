@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inventory — वस्त्रVault</title>
+  <meta name="description" content="VastraVault Inventory — manage and track all your boutique products with smart filters." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👗</text></svg>" />
+</head>
+<body data-page="inventory">
+
+  <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
+  <div class="app-layout">
+    <aside class="sidebar" id="sidebar">
+      <a href="index.html" class="sidebar-brand"><span class="hindi">वस्त्र</span><span class="english">Vault</span></a>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-label">Main</div>
+        <a href="dashboard.html" class="sidebar-link"><span class="icon">📊</span> Dashboard</a>
+        <a href="pos.html" class="sidebar-link"><span class="icon">🧾</span> POS / New Sale</a>
+        <a href="inventory.html" class="sidebar-link active"><span class="icon">📦</span> Inventory</a>
+        <div class="sidebar-section-label">Commerce</div>
+        <a href="whatsapp-orders.html" class="sidebar-link"><span class="icon">💬</span> WhatsApp Orders <span class="badge">2</span></a>
+        <a href="customers.html" class="sidebar-link"><span class="icon">👤</span> Customers</a>
+        <div class="sidebar-section-label">Intelligence</div>
+        <a href="analytics.html" class="sidebar-link"><span class="icon">📈</span> Analytics & Reports</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sidebar-user"><div class="sidebar-avatar">P</div><div class="sidebar-user-info"><div class="sidebar-user-name">Priya's Boutique</div><div class="sidebar-user-role">Owner</div></div></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1>📦 Inventory</h1>
+          <p>Track and manage all your boutique products</p>
+        </div>
+        <div class="page-header-actions">
+          <button class="btn btn-maroon" onclick="showToast('Scan feature coming soon! 📸', 'info')">📸 Scan to Add</button>
+        </div>
+      </div>
+
+      <div class="page-body">
+        <!-- Filters -->
+        <div class="filters-bar">
+          <div class="search-input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="text" id="inventorySearch" placeholder="Search by name or barcode..." />
+          </div>
+          <div class="filter-group">
+            <label>Category:</label>
+            <select class="filter-select" id="filterCategory">
+              <option value="all">All Categories</option>
+              <option value="Saree">Saree</option>
+              <option value="Kurti">Kurti</option>
+              <option value="Western">Western</option>
+              <option value="Fabric">Fabric</option>
+              <option value="Accessories">Accessories</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Stock:</label>
+            <select class="filter-select" id="filterStock">
+              <option value="all">All Status</option>
+              <option value="in-stock">In Stock</option>
+              <option value="low-stock">Low Stock</option>
+              <option value="dead-stock">Dead / Aging Stock</option>
+              <option value="out-of-stock">Out of Stock</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid" id="inventoryGrid"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

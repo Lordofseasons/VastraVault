@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — वस्त्रVault</title>
+  <meta name="description" content="VastraVault Dashboard — real-time boutique insights, KPIs, and sales tracking." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👗</text></svg>" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body data-page="dashboard">
+
+  <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <a href="index.html" class="sidebar-brand">
+        <span class="hindi">वस्त्र</span><span class="english">Vault</span>
+      </a>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-label">Main</div>
+        <a href="dashboard.html" class="sidebar-link active">
+          <span class="icon">📊</span> Dashboard
+        </a>
+        <a href="pos.html" class="sidebar-link">
+          <span class="icon">🧾</span> POS / New Sale
+        </a>
+        <a href="inventory.html" class="sidebar-link">
+          <span class="icon">📦</span> Inventory
+        </a>
+        <div class="sidebar-section-label">Commerce</div>
+        <a href="whatsapp-orders.html" class="sidebar-link">
+          <span class="icon">💬</span> WhatsApp Orders
+          <span class="badge">2</span>
+        </a>
+        <a href="customers.html" class="sidebar-link">
+          <span class="icon">👤</span> Customers
+        </a>
+        <div class="sidebar-section-label">Intelligence</div>
+        <a href="analytics.html" class="sidebar-link">
+          <span class="icon">📈</span> Analytics & Reports
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="sidebar-avatar">P</div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name">Priya's Boutique</div>
+            <div class="sidebar-user-role">Owner</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1>Dashboard</h1>
+          <p>Welcome back, Priya! Here's your boutique overview.</p>
+        </div>
+        <div class="page-header-actions">
+          <span style="font-size:0.85rem;color:var(--gray-500)">📅 March 15, 2026</span>
+        </div>
+      </div>
+
+      <div class="page-body">
+
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-icon revenue">💰</div>
+            <div class="kpi-info">
+              <div class="kpi-label">Today's Revenue</div>
+              <div class="kpi-value" id="kpiRevenue">₹0</div>
+              <span class="kpi-change up">↑ 12% vs yesterday</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon orders">💬</div>
+            <div class="kpi-info">
+              <div class="kpi-label">Pending WhatsApp Orders</div>
+              <div class="kpi-value" id="kpiPendingWA">0</div>
+              <span class="kpi-change down">Needs attention</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon deadstock">📉</div>
+            <div class="kpi-info">
+              <div class="kpi-label">Dead Stock Items</div>
+              <div class="kpi-value" id="kpiDeadStock">0</div>
+              <span class="kpi-change down">30+ days unsold</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon lowstock">⚠️</div>
+            <div class="kpi-info">
+              <div class="kpi-label">Low Stock Alerts</div>
+              <div class="kpi-value" id="kpiLowStock">0</div>
+              <span class="kpi-change down">Below threshold</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+          <a href="pos.html" class="quick-action-btn">
+            <div class="qa-icon">🧾</div>
+            <div class="qa-text">+ New Sale</div>
+          </a>
+          <a href="whatsapp-orders.html" class="quick-action-btn">
+            <div class="qa-icon">💬</div>
+            <div class="qa-text">Log WhatsApp Order</div>
+          </a>
+          <a href="inventory.html" class="quick-action-btn">
+            <div class="qa-icon">📦</div>
+            <div class="qa-text">Add Stock</div>
+          </a>
+        </div>
+
+        <!-- Charts & Table Row -->
+        <div class="dashboard-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">📈 Weekly Sales Trend</div>
+            </div>
+            <div class="panel-body">
+              <div class="chart-container">
+                <canvas id="weeklySalesChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">⚠️ Low Stock Alerts</div>
+            </div>
+            <div class="panel-body">
+              <div id="lowStockList" style="display:flex;flex-direction:column;gap:12px">
+                <!-- Filled by JS or static for demo -->
+                <div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--gray-100)">
+                  <span style="font-size:1.3rem">👗</span>
+                  <div style="flex:1"><div style="font-weight:600;font-size:0.88rem">Indo-Western Gown</div><div style="font-size:0.75rem;color:var(--gray-500)">5 pcs left · Threshold: 8</div></div>
+                  <span class="status-badge pending">Low</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--gray-100)">
+                  <span style="font-size:1.3rem">👗</span>
+                  <div style="flex:1"><div style="font-weight:600;font-size:0.88rem">Georgette Lehenga</div><div style="font-size:0.75rem;color:var(--gray-500)">3 pcs left · Threshold: 5</div></div>
+                  <span class="status-badge pending">Low</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--gray-100)">
+                  <span style="font-size:1.3rem">👚</span>
+                  <div style="flex:1"><div style="font-weight:600;font-size:0.88rem">Embroidered Anarkali</div><div style="font-size:0.75rem;color:var(--gray-500)">2 pcs left · Threshold: 5</div></div>
+                  <span class="status-badge cancelled">Critical</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;padding:8px 0">
+                  <span style="font-size:1.3rem">👚</span>
+                  <div style="flex:1"><div style="font-weight:600;font-size:0.88rem">Block Print Kurti</div><div style="font-size:0.75rem;color:var(--gray-500)">0 pcs left · Out of Stock!</div></div>
+                  <span class="status-badge cancelled">Empty</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Orders -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">🛍️ Recent Orders</div>
+            <a href="whatsapp-orders.html" class="btn btn-sm btn-ghost">View All →</a>
+          </div>
+          <div class="panel-body no-padding">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Items</th>
+                  <th>Channel</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody id="recentOrdersBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

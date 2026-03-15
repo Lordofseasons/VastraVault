@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POS &amp; Billing — वस्त्रVault</title>
+  <meta name="description" content="VastraVault Smart POS — generate GST-compliant invoices in under 60 seconds." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👗</text></svg>" />
+</head>
+<body data-page="pos">
+
+  <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
+  <div class="app-layout">
+    <aside class="sidebar" id="sidebar">
+      <a href="index.html" class="sidebar-brand"><span class="hindi">वस्त्र</span><span class="english">Vault</span></a>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-label">Main</div>
+        <a href="dashboard.html" class="sidebar-link"><span class="icon">📊</span> Dashboard</a>
+        <a href="pos.html" class="sidebar-link active"><span class="icon">🧾</span> POS / New Sale</a>
+        <a href="inventory.html" class="sidebar-link"><span class="icon">📦</span> Inventory</a>
+        <div class="sidebar-section-label">Commerce</div>
+        <a href="whatsapp-orders.html" class="sidebar-link"><span class="icon">💬</span> WhatsApp Orders <span class="badge">2</span></a>
+        <a href="customers.html" class="sidebar-link"><span class="icon">👤</span> Customers</a>
+        <div class="sidebar-section-label">Intelligence</div>
+        <a href="analytics.html" class="sidebar-link"><span class="icon">📈</span> Analytics & Reports</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sidebar-user"><div class="sidebar-avatar">P</div><div class="sidebar-user-info"><div class="sidebar-user-name">Priya's Boutique</div><div class="sidebar-user-role">Owner</div></div></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1>🧾 Point of Sale</h1>
+          <p>Search products and create a new sale</p>
+        </div>
+      </div>
+
+      <div class="page-body">
+        <div class="pos-layout">
+
+          <!-- Product Search & Grid -->
+          <div class="pos-products">
+            <div class="search-input-wrap" style="margin-bottom:16px">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input type="text" id="posSearch" placeholder="Search by name, barcode, or category..." class="form-input" style="padding-left:36px" />
+            </div>
+            <div class="product-grid" id="posProductList"></div>
+          </div>
+
+          <!-- Cart -->
+          <div class="pos-cart">
+            <div class="cart-header">
+              <h3>🛒 Cart</h3>
+              <span id="cartCount" style="font-size:0.8rem;color:var(--gray-500)"></span>
+            </div>
+
+            <div class="cart-items" id="cartItems">
+              <div class="empty-state">
+                <div class="icon">🛒</div>
+                <h3>Cart is empty</h3>
+                <p>Search and click products to add</p>
+              </div>
+            </div>
+
+            <div class="cart-summary">
+              <div class="form-group" style="margin-bottom:12px">
+                <label class="form-label">Customer</label>
+                <select class="form-select" id="posCustomer">
+                  <option value="">Walk-in Customer</option>
+                  <option value="C001">Meera Sharma</option>
+                  <option value="C002">Anita Patel</option>
+                  <option value="C003">Priya Reddy</option>
+                  <option value="C004">Divya Joshi</option>
+                  <option value="C005">Sunita Verma</option>
+                  <option value="C006">Kavita Singh</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom:12px">
+                <label class="form-label">Payment Mode</label>
+                <select class="form-select" id="posPayment">
+                  <option value="cash">💵 Cash</option>
+                  <option value="upi">📱 UPI</option>
+                  <option value="card">💳 Card</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom:12px">
+                <label class="form-label">Discount (₹)</label>
+                <input type="number" class="form-input" id="discountInput" value="0" min="0" />
+              </div>
+              <div class="cart-summary-row">
+                <span>Subtotal</span>
+                <span id="cartSubtotal">₹0</span>
+              </div>
+              <div class="cart-summary-row">
+                <span>GST (5%)</span>
+                <span id="cartGST">₹0</span>
+              </div>
+              <div class="cart-summary-row">
+                <span>Discount</span>
+                <span id="cartDiscount">- ₹0</span>
+              </div>
+              <div class="cart-summary-row total">
+                <span>Total</span>
+                <span id="cartTotal">₹0</span>
+              </div>
+            </div>
+
+            <div class="cart-actions">
+              <button class="btn btn-gold" id="generateInvoice">🧾 Generate Invoice</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
